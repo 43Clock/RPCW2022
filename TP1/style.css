@@ -1,0 +1,13 @@
+body {
+    background-image: url("japan2.png");
+    /*background-repeat: no-repeat;*/
+    background-size: auto;
+}
+
+.center {
+    padding-top: 15%;
+}
+
+img {
+    max-width: 100%;
+}
