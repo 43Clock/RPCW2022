@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifesto>
+    <metadata>
+        <titulo>TPC1 - Japão</titulo>
+        <data>22 de fevereiro de 2022</data>
+        <autor>Luís Carlos da Costa Salazar Martins</autor>
+        <uc>Representação e Processamento de Conhecimento na Web</uc>
+    </metadata>
+    <resumo>
+        Este trabalho consistia em desenvolver uma página web simples sobre um dos seguintes temas:
+            -> Jacaré
+            -> Japão
+            -> Jarro
+            -> José
+            -> Janela
+    </resumo>
+    <resultados>
+        <html>
+            <nome>index.html</home>
+        </html>
+        <css>
+            <nome>w3.css</home>
+            <nome>style.css</home>
+        </css>
+        <imagem>
+            <nome>atracao1.jpg</home>
+            <nome>atracao2.jpg</home>
+            <nome>atracao3.jpg</home>
+            <nome>bomb.jpg</home>
+            <nome>flag.jpg</home>
+            <nome>japan2.jpg</home>
+            <nome>localizacao.jpg</home>
+            <nome>tsunami.jpg</home>
+        </imagem>
+    </resultados>
+</manifesto>
