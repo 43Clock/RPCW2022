@@ -1,36 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<manifesto>
-    <metadata>
-        <titulo>TPC1 - Japão</titulo>
-        <data>22 de fevereiro de 2022</data>
-        <autor>Luís Carlos da Costa Salazar Martins</autor>
-        <uc>Representação e Processamento de Conhecimento na Web</uc>
-    </metadata>
+<doc>
+    <meta>
+        <titulo>TPC1: uma página web</titulo>
+        <data>22-02-15</data>
+        <autor>
+            <id>PG47412</id>
+            <nome>Luís Carlos da Costa Salazar Martins</nome>
+        </autor>
+        <uc>
+            <sigla>RPCW</sigla>
+            <nome>Representação e Processamento de Conhecimento na Web</nome>
+        </uc>
+    </meta>
     <resumo>
-        Este trabalho consistia em desenvolver uma página web simples sobre um dos seguintes temas:
-            -> Jacaré
-            -> Japão
-            -> Jarro
-            -> José
-            -> Janela
+        <p>Este trabalho consistia em desenvolver uma página web simples sobre um dos seguintes temas:</p>
+        <p> -> Jacaré</p>
+        <p> -> Japão</p>
+        <p> -> Jarro</p>
+        <p> -> José</p>
+        <p> -> Janela</p>
     </resumo>
     <resultados>
-        <html>
-            <nome>index.html</home>
-        </html>
-        <css>
-            <nome>w3.css</home>
-            <nome>style.css</home>
-        </css>
-        <imagem>
-            <nome>atracao1.jpg</home>
-            <nome>atracao2.jpg</home>
-            <nome>atracao3.jpg</home>
-            <nome>bomb.jpg</home>
-            <nome>flag.jpg</home>
-            <nome>japan2.jpg</home>
-            <nome>localizacao.jpg</home>
-            <nome>tsunami.jpg</home>
-        </imagem>
+        <resultado>
+            <url>index.html</url>
+            <texto>Página web</texto>
+        </resultado>
+        <resultado>
+            <url>w3.css</url>
+            <text>Stylesheet do W3 CSS</text>
+        </resultado>
+        <resultado>style.css</resultado>
+        <resultado>atracao1.jpg</resultado>
+        <resultado>atracao2.jpg</resultado>
+        <resultado>atracao3.jpg</resultado>
+        <resultado>bomb.jpg</resultado>
+        <resultado>flag.jpg</resultado>
+        <resultado>japan2.jpg</resultado>
+        <resultado>localizacao.jpg</resultado>
+        <resultado>tsunami.jpg</resultado>
     </resultados>
-</manifesto>
+</doc>
