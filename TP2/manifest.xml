@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doc>
+    <meta>
+        <titulo>TPC2</titulo>
+        <data>22-03-01</data>
+        <autor>
+            <id>PG47412</id>
+            <nome>Luís Carlos da Costa Salazar Martins</nome>
+        </autor>
+        <uc>
+            <sigla>RPCW</sigla>
+            <nome>Representação e Processamento de Conhecimento na Web</nome>
+        </uc>
+    </meta>
+    <resumo>
+        <p>Este trabalho consistia em desenvolver um servidor web </p>
+        <p>Em primeiro lugar, é necessário processar um Json que continha informação sobre vários filmes</p>
+        <p>Por fim, era necessário fornecer esses htmls ao utilizador a partir do servidor web</p>
+    </resumo>
+    <resultados>
+        <resultado>
+            <url>server.js</url>
+            <texto>Servidor</texto>
+        </resultado>
+        <resultado>
+            <url>parse.py</url>
+            <texto>Parser do dataset</texto>
+        </resultado>
+    </resultados>
+</doc>
