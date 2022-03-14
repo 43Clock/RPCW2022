@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doc>
+    <meta>
+        <titulo>TPC2</titulo>
+        <data>22-03-01</data>
+        <autor>
+            <id>PG47412</id>
+            <nome>Luís Carlos da Costa Salazar Martins</nome>
+        </autor>
+        <uc>
+            <sigla>RPCW</sigla>
+            <nome>Representação e Processamento de Conhecimento na Web</nome>
+        </uc>
+    </meta>
+    <resumo>
+        <p>Este trabalho consistia em desenvolver um servidor web que iria buscar informações a um REST API</p>
+        <p>Em primeiro lugar, é necessário ir buscar os dados sobre alunos, cursos e instrumentos de uma escola de musica</p>
+        <p>Por fim, era necessário apresentar esses dados a partir do servidor criado</p>
+    </resumo>
+    <resultados>
+        <resultado>
+            <url>servidor.js</url>
+            <texto>Servidor responsável por buscar os dados ao REST API</texto>
+        </resultado>
+        <resultado>
+            <url>db.json</url>
+            <texto>Ficheiro usado pelo json-server para criar um REST API</texto>
+        </resultado>
+    </resultados>
+</doc>

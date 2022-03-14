@@ -46,7 +46,16 @@ function toTitleCase(str) {
 
 function writeAlunos(data){
     str = `
-        <table>
+    <!DOCTYPE html>
+    <html lang="eng">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <title>A</title>
+    </head>
+    <body>
+        <table class="w3-table w3-striped w3-border">
         <tr>
             <th>ID</th>
             <th>Nome</th>
@@ -62,12 +71,22 @@ function writeAlunos(data){
                     <td>${ele.instrumento}</td>
                 </tr>`
     })
-    str += "</table>"
+    str += `</table>
+            </body></html>`
     return str
 }
 
 function writeAluno(data){
     str = `
+    <!DOCTYPE html>
+    <html lang="eng">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <title>A</title>
+    </head>
+    <body>
         <h1>Aluno ${data.id}</h1>
         <p><b>Nome</b>: ${toTitleCase(data.nome)}</p>
         <p><b>Data de Nascimento</b>: ${data.dataNasc}</p>
@@ -75,12 +94,22 @@ function writeAluno(data){
         <p><b>Ano de Curso</b>: ${data.anoCurso}</p>
         <p><b>Instrumento</b>: ${data.instrumento}</p>
     `
+    str+= `</body></html>`
     return str
 }
 
 function writeCursos(data){
     str = `
-        <table>
+    <!DOCTYPE html>
+    <html lang="eng">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <title>A</title>
+    </head>
+    <body>
+        <table class="w3-table w3-striped w3-border">
         <tr>
             <th>ID</th>
             <th>Designação</th>
@@ -96,13 +125,23 @@ function writeCursos(data){
                     <td>${ele.instrumento["#text"]}</td>
                 </tr>`
     })
-    str += "</table>"
+    str += `</table>
+            </body></html>`
     return str
 }
 
 function writeInstrumentos(data){
     str = `
-        <table>
+    <!DOCTYPE html>
+    <html lang="eng">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <title>A</title>
+    </head>
+    <body>
+        <table class="w3-table w3-striped w3-border">
         <tr>
             <th>ID</th>
             <th>Nome</th>
@@ -114,7 +153,8 @@ function writeInstrumentos(data){
                     <td>${ele["#text"]}</td>
                 </tr>`
     })
-    str += "</table>"
+    str += `</table>
+            </body></html>`
     return str
 }
 
