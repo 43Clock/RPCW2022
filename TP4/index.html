@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./public/w3.css" />
+    <script src="https://kit.fontawesome.com/8cc1313c7b.js" crossorigin="anonymous"></script>
+    <title>To Do List</title>
+  </head>
+  <body>
+    <div class="w3-container w3-${cor}">
+      <h3>${titulo}</h3>
+    </div>
+
+    <form class="w3-container" action="/tasks${edit}" method="POST">
+      <div class="w3-row-padding">
+        <div class="w3-col m6">
+          <label class="w3-text-teal"><b>Nome da Tarefa</b></label>
+          <input class="w3-input w3-border w3-light-grey" type="text" name="nome"/>
+
+          <label class="w3-text-teal"><b>Descrição</b></label>
+          <textarea class="w3-input w3-border w3-light-grey" placeholder="Descrição da tarefa" rows="1" cols="20" wrap="physical" name="descricao"></textarea>
+
+          <label class="w3-text-teal"><b>Tipo da Tarefa</b></label>
+          <input class="w3-input w3-border w3-light-grey" type="text" name="tipo"/>
+        
+        </div>
+
+        <div class="w3-col m6">
+          <label class="w3-text-teal"><b>Dead Line</b></label>
+          <input class="w3-input w3-border w3-light-grey" type="date" name="data"/>
+
+          <label class="w3-text-teal"><b>Pessoa a Realizar</b></label>
+          <input class="w3-input w3-border w3-light-grey" type="text" name="pessoa"/>
+        </div>
+      </div>
+
+      <div class="w3-padding">
+          <input class="w3-btn w3-blue-grey" type="submit" value="${butao}" />
+          <input class="w3-btn w3-blue-grey" type="reset" value="Limpar valores" />
+      </div>
+    </form>
+    <div class="w3-row-padding">
+        <div class="w3-col m6">
+            <div class="w3-container w3-red"><h4>Tarefas por Realizar</h4></div>
+            <ul class="w3-ul w3-padding-16">
+                ${pending}
+            </ul>
+        </div>
+        <div class="w3-col m6">
+            <div class="w3-container w3-green"><h4>Tarefas Realizadas</h4></div>
+            <ul class="w3-ul w3-padding-16">
+                ${complete}
+            </ul>
+        </div>
+    </div>
+  </body>
+</html>

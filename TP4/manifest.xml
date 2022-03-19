@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doc>
+    <meta>
+        <titulo>TPC4</titulo>
+        <data>22-03-19</data>
+        <autor>
+            <id>PG47412</id>
+            <nome>Luís Carlos da Costa Salazar Martins</nome>
+        </autor>
+        <uc>
+            <sigla>RPCW</sigla>
+            <nome>Representação e Processamento de Conhecimento na Web</nome>
+        </uc>
+    </meta>
+    <resumo>
+        <p>Este trabalho consistia em desenvolver um servidor web que iria buscar informações a um REST API com o uso do json-server</p>
+        <p>O servidor consiste numa Single Page Application (SPA) na qual é possível consultar as tarefas por concluir, as tarefas já concluídas e definir novas tarefas,</p>
+        <p>sendo tambem possível editar tarefas já existentes, marcar tarefas ativas como concluídas e remover tarefas concluídas.</p>
+    </resumo>
+    <resultados>
+        <resultado>
+            <url>server.js</url>
+            <texto>Ficheiro usado para correr o servidor web</texto>
+        </resultado>
+        <resultado>
+            <url>index.html</url>
+            <texto>Template para a página web que contem certas zonas que podem ser alteradas</texto>
+        </resultado>
+        <resultado>
+            <url>db.json</url>
+            <texto>Ficheiro usado pelo json-server para criar um REST API e a base de dados</texto>
+        </resultado>
+    </resultados>
+</doc>
