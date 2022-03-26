@@ -1,0 +1,19 @@
+extends layout 
+
+block content
+  h1.w3-center 
+    b Título : #{musica.tit}
+  p
+    b Província : 
+    =musica.prov
+  p
+    b Local : 
+    = musica.local
+  p 
+    b Músico : 
+    =musica.musico
+  p 
+    b Duração : 
+    = musica.duracao
+  p.w3-center 
+    a(href="/musicas") Voltar

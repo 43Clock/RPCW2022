@@ -1,0 +1,15 @@
+extends layout
+
+block content
+    h1(class="w3-container w3-blue") Lista de Musicas da Provincia: #{prov}
+    table(class="w3-table-all")
+        tr(class="w3-green")
+            th Identificador
+            th Titulo
+            th Provincia
+        each a in musicas
+            tr 
+                td
+                    a(href="/musicas/#{a.id}")=a.id
+                td=a.tit
+                td=a.prov

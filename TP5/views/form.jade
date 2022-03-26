@@ -1,0 +1,23 @@
+extends layout 
+
+block content
+  h1.w3-center Adiciona Uma Nova Música
+  form.w3-container(action='/musicas', method='POST')
+      label(class="w3-text-blue")
+        b Título
+      input(class="w3-input w3-border w3-light-grey" type='text', name='tit')
+      label(class="w3-text-blue")
+        b Músico
+      input(class="w3-input w3-border w3-light-grey" type='text', name='musico')        
+      label(class="w3-text-blue")
+        b Província
+      input(class="w3-input w3-border w3-light-grey" type='text', name='prov')          
+      label(class="w3-text-blue")
+        b Local
+      input(class="w3-input w3-border w3-light-grey" type='text', name='local') 
+      label(class="w3-text-blue")
+        b Duração
+      input(class="w3-input w3-border w3-light-grey" type='text', name='duracao')
+      br
+      input(class="w3-btn w3-blue-grey" type='submit', value='Registar')
+      input(class="w3-btn w3-blue-grey w3-margin" type='reset', value='Limpar valores')
