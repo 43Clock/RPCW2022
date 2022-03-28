@@ -2,7 +2,6 @@ var express = require('express');
 var router = express.Router();
 var axios = require("axios");
 const { json } = require('express');
-const { response } = require('../app');
 
 router.get('/', function(req, res, next) {
     axios.get("http://localhost:3000/musicas")
