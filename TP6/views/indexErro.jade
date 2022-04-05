@@ -1,0 +1,34 @@
+extends layout
+
+block content
+  h1(class="w3-teal w3-container") File Manager
+  p(class="w3-red") Ficheiro já existe
+  form(class='w3-container' method='POST' action='/' enctype='multipart/form-data')
+      label(class="w3-text-blue")
+          b Ficheiro 
+      input(class="w3-input w3-border w3-light-grey" type="file", name="ficheiro")
+      label(class="w3-text-blue")
+          b Descrição 
+      input(class="w3-input w3-border w3-light-grey" type="text" name="desc")
+      input(class="w3-margin w3-btn w3-blue-grey" type='submit' value='Submit')
+  h2(class="w3-container w3-teal w3-center") File List
+  table.w3-table.w3-bordered
+    tr
+      th(class="w3-center") Date
+      th(class="w3-center") Description
+      th(class="w3-center") File
+      th(class="w3-center") Size
+      th(class="w3-center") Type
+      //-th
+    each f in list
+      tr
+        td(class="w3-center")= f.date
+        td(class="w3-center")= f.desc
+        td(class="w3-center")
+          a(href="/images/"+f.name download target="_blank")= f.name
+        td(class="w3-center")= f.size
+        td(class="w3-center")= f.mimetype
+        td
+          form(action="/delete/"+f._id method='POST')
+            input(class="w3-button w3-round w3-tiny w3-red" type='submit' value='X')
+

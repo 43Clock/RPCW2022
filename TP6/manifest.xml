@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doc>
+    <meta>
+        <titulo>TPC6</titulo>
+        <data>05-04-2022</data>
+        <autor>
+            <id>PG47412</id>
+            <nome>Luís Carlos da Costa Salazar Martins</nome>
+        </autor>
+        <uc>
+            <sigla>RPCW</sigla>
+            <nome>Representação e Processamento de Conhecimento na Web</nome>
+        </uc>
+    </meta>
+    <resumo>
+        <p>O objetivo deste trabalho de casa seria implementar um gestor de ficheiros com funcionalidade de upload, através de um formulário.</p>
+        <p>Para além disso era necessário guardar a informação do ficheiro bem com a descrição em algum lugar.</p>
+        <p>Para isso existem duas possibilidades: ou numa base de dados em MongoDB ou num ficheiro JSON.</p>
+        <p>No trabalho apresentado foi utilizada uma base de dados em MongoDB, sendo que o ficheiro carregado através da página Web é guardado de forma local.</p>
+        <p>Posteriormente, o mesmo será utilizado para poder ser descarregado quando o utilizador assim o entender, ao interagir com o nome do ficheiro.</p>
+        <p>Para além do nome, são apresentados na página Web: a data de upload, o tamanho do ficheiro, o tipo do ficheiro e uma breve descrição do mesmo.</p>
+    </resumo>
+    <resultados>
+        <resultado>
+            <url>app.js</url>
+            <texto>Serviço que responde aos pedidos do cliente e comunica com a base dados.</texto>
+        </resultado>
+        <resultado>
+            <url>controllers/file.js</url>
+            <texto>Ficheiro que permite a interação com a base de dados.</texto>
+        </resultado>
+        <resultado>
+            <url>models/file.js</url>
+            <texto>Ficheiro que define o esquema do objeto presente na base de dados.</texto>
+        </resultado>
+    </resultados>
+</doc>
