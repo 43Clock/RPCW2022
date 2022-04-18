@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  h1(class="w3-center") CLAV
+  table(class="w3-table w3-striped w3-border")
+    tr(class="w3-blue")
+      th Código
+      th Titulo
+    each ele in classes
+      tr 
+        td
+          a(href="/c"+ele.codigo)=ele.codigo 
+        td=ele.titulo

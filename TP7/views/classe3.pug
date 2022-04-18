@@ -1,0 +1,27 @@
+extends layout
+
+block content
+  div(class="w3-panel w3-pale-blue w3-leftbar w3-rightbar w3-border-blue")
+    h1(class="w3-center")=data.titulo
+    p
+        b Descrição: 
+        =data.descricao
+  h2(class="w3-center") Processos Relacionados
+  table(class="w3-table w3-striped w3-border")
+    tr(class="w3-blue")
+      th Código
+      th Titulo
+      th Tipo
+    each ele in rel
+      tr 
+        td
+          a(href="/c"+ele.codigo)=ele.codigo 
+        td=ele.titulo
+        td=ele.idRel
+  p(class="w3-center")
+    if (!data.pai.codigo)
+      a(href="/") Voltar 
+    else 
+      a(href="/c"+data.pai.codigo) Voltar
+  p(class="w3-center")
+    a(href="/") Página Inicial 
