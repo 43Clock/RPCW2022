@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doc>
+    <meta>
+        <titulo>TPC7</titulo>
+        <data>19-04-2022</data>
+        <autor>
+            <id>PG47412</id>
+            <nome>Luís Carlos da Costa Salazar Martins</nome>
+        </autor>
+        <uc>
+            <sigla>RPCW</sigla>
+            <nome>Representação e Processamento de Conhecimento na Web</nome>
+        </uc>
+    </meta>
+    <resumo>
+    </resumo>
+    <resultados>
+        <resultado>
+            <url>app.js</url>
+            <texto>Serviço que responde aos pedidos do cliente e comunica com um API de dados, bem como com os routers do Express.</texto>
+        </resultado>
+        <resultado>
+            <url>http://clav-api.di.uminho.pt/v2/docs</url>
+            <texto>API de requisição dos dados utilizados no trabalho.</texto>
+        </resultado>
+    </resultados>
+</doc>
