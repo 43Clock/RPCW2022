@@ -1,0 +1,3 @@
+[submodule "Projeto"]
+	path = Projeto
+	url = git@github.com:43Clock/RPCW-Projeto.git
