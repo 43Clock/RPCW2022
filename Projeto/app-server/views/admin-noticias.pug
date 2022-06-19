@@ -1,0 +1,289 @@
+extends admin-layout
+
+block content-admin
+    p(class="w3-center" id="report")
+    div.w3-cells-row.w3-margin-top.w3-margin-bottom
+            div.w3-container.w3-cell
+                input(type="text" id="searchbar" placeholder="Search..." class="w3-input w3-border w3-round")
+            div.w3-container.w3-cell
+                select(id="searchType" class="w3-select w3-border w3-round" name="tipo")
+                    option(value="0" selected) Data
+                    option(value="1") Titulo
+                    //option(value="2") Visibilidade
+            div.w3-container.w3-cell
+            div.w3-container.w3-cell
+                input(type="button" id="addnoticia" class="w3-input w3-border w3-round" value="Adicionar Noticia" onclick="criarnoticia()")
+            
+    table.w3-table-all(id="tabela")
+        thead
+            tr
+                th(id="0" onclick="sortTable(0)") Data
+                th(id="1" onclick="sortTable(1)") Titulo
+                th Visibilidade
+                th Editar
+                th Remover
+        tbody(id="tableBody")
+            each noticia in noticias
+                tr(id="row-"+noticia._id)
+                    td(id="data-"+noticia._id)=noticia.data_criacao
+                    td(id="titulo-"+noticia._id)=noticia.titulo
+                    td(id="vis-"+noticia._id)
+                        //Por botoes diferentes - botão com ajax para alterar a visibilidade
+                        if noticia.visibilidade=="visivel" 
+                            button(id="visibilidade-"+noticia._id+"-visivel" class="w3-button w3-round-large w3-small") 
+                                i(class="fa fa-eye" aria-hidden="true")
+                        else
+                            button(id="visibilidade-"+noticia._id+"-invisivel" class="w3-button w3-round-large w3-small") 
+                                i(class="fa fa-eye-slash" aria-hidden="true")
+                    td
+                        button(id="edit-"+noticia._id class="w3-button w3-round-large w3-tiny w3-blue")
+                            i(class="fa fa-pen")
+                    td
+                        button(id="remove-"+noticia._id class="w3-button w3-round-large w3-tiny w3-red") Remover
+
+    script(type="application/javascript" src= "https://cdn.tiny.cloud/1/no-api-key/tinymce/6.0.3-5/tinymce.min.js")
+    script(type="application/javascript" src= "/javascripts/my-tinymce-config.js")
+    script(type="application/javascript" src= "/javascripts/tableQuery.js")
+ 
+    script.
+
+        var lastColumn = undefined
+        var lastLevel = undefined
+        var lastUsername = undefined
+        var lastId = undefined
+
+        function sortTable(n){
+            var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+            table = document.getElementById("tabela");
+            switching = true;
+            dir = "asc";
+            while (switching) {
+                switching = false;
+                rows = table.rows;
+                for (i = 1; i < (rows.length - 1); i++) {
+                    shouldSwitch = false;
+                    x = rows[i].getElementsByTagName("TD")[n];
+                    y = rows[i + 1].getElementsByTagName("TD")[n];
+                    if (dir == "asc") {
+                        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                            shouldSwitch = true;
+                            break;
+                        }
+                    } 
+                    else if (dir == "desc") {
+                        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                            shouldSwitch = true;
+                            break;
+                        }
+                    }
+                }
+                if (shouldSwitch) {
+                    rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                    switching = true;
+                    switchcount ++;
+                } else {
+                    if (switchcount == 0 && dir == "asc") {
+                        dir = "desc";
+                        switching = true;
+                    }
+                }
+            }
+            if(lastColumn!=undefined){
+                var temp = rows[0].getElementsByTagName("th")[lastColumn].innerHTML
+                var tempSplit = temp.toString().split(" ")
+                rows[0].getElementsByTagName("th")[lastColumn].innerHTML = tempSplit[0]
+            }
+            var th = rows[0].getElementsByTagName("th")[n].innerHTML
+            var split = th.toString().split(" ")
+            if(dir == "asc"){
+                rows[0].getElementsByTagName("th")[n].innerHTML = split[0] +" ▲"
+            }else{
+                rows[0].getElementsByTagName("th")[n].innerHTML = split[0] +" ▼"
+            }
+            lastColumn = n;
+        }
+
+        //abrir o modal...
+        $(document).on('click','button[id^=edit]',function(){
+            var id = $(this).attr("id").split("-")[1]
+            lastId = undefined
+            
+            var data = {}
+            $.ajax({
+                url : "/admin/noticias/"+id,
+                type: 'GET',
+                success: function(result){
+                    //alert(JSON.stringify(result))
+                    alterarnoticia(result.noticia)
+                },
+                error: function(){
+                    alert("erro a pesquisar informacao")
+                    location.reload()
+                }
+            })
+
+        })
+
+        
+
+        $(document).on('click','button[id^=visibilidade]',function(){
+            var id = $(this).attr("id").split("-")[1]
+            var val = $(this).attr("id").split("-")[2]
+            if(val=="visivel")
+                val="invisivel"
+            else
+                val="visivel"
+            lastId = undefined
+
+            var data = {}
+            data["visibilidade"] = val
+            $.ajax({
+                type: "PUT",
+                url: "/admin/noticias/"+id,
+                contentType: 'application/json',
+                data: JSON.stringify(data),
+                success: function(){
+                    //alert("só alterar")
+                    location.reload()
+                },
+                error: function(){
+                    //alert("erro")
+                    location.reload()
+                }
+            })   
+        })
+
+
+        $(document).on('click','button[id^=remove]',function(){
+            var id = $(this).attr("id").split("-")[1]
+            lastId = undefined
+            var data = {}
+            $.ajax({
+                url : "/admin/noticias/"+id,
+                type: 'DELETE',
+                success: function(){
+                    //"row-"+noticia._id)
+                    $("#row-"+id).remove()
+                    //location.reload()
+                },
+                error: function(){
+                    //alert("erro")
+                    //location.reload()
+                    createReport("red","Erro na remoção")
+                }
+            })     
+        })
+
+
+
+        function criarnoticia(){
+            form = `
+            <fieldset>
+                <legend>Nova notícia</legend>
+                <label for="input">Introduza o Titulo:</label>
+                <input type="text" name="titulo" id="titulo">
+                
+                <textarea id="conteudo" style="width:100%;" placeholder="Conteudo"></textarea>
+                
+                <input class="w3-radio" type="radio" name="visibilidade" value="visivel" checked>
+                <label>Visível</label>
+
+                <input class="w3-radio" type="radio" name="visibilidade" value="invisivel">
+                <label>Invisível</label>
+                <button name="submeter" id="submeter">Submeter Notícia</button>
+            </fieldset>
+            `
+
+            
+            $("#display").empty()
+            $("#display").append(form)
+            $("#display").modal()
+        }
+        
+
+        $(document).on("click","button[id^=submeter]",function(){
+            var data = {}
+            data["titulo"] = $("input[id^=titulo]").val()
+            data["conteudo"] = $("textarea[id^=conteudo]").val()
+            data["visibilidade"] = $('input[name="visibilidade"]:checked').val();
+            var split = new Date().toISOString().substring(0,16).split("T")
+            data["data_criacao"] = split[0]+" "+split[1]
+            $.ajax({
+                type: "POST",
+                url: "/admin/noticias",
+                contentType: 'application/json',
+                data: JSON.stringify(data),
+                success: function(){
+                    location.reload()
+                },
+                error: function(){
+                    location.reload()
+                }
+            })
+        })
+
+
+
+        function alterarnoticia(noticia){
+            form = `
+            <fieldset>
+                <legend>Alterar notícia - ${noticia.titulo}</legend>
+                <input type="hidden" id="idnoticia" value="${noticia._id}">
+                <label for="input">Introduza o Titulo:</label>
+                <input type="text" name="titulo" id="titulo" value="${noticia.titulo}">
+                
+                <textarea id="conteudo" style="width:100%;">${noticia.conteudo}</textarea>
+                
+                <input class="w3-radio" type="radio" name="visibilidade" value="visivel" ${(() => {if(noticia.visibilidade == "visivel") {return `checked`;}})()}>
+                <label>Visível</label>
+
+                <input class="w3-radio" type="radio" name="visibilidade" value="invisivel" ${(() => {if(noticia.visibilidade == "invisivel") {return `checked`;}})()}>
+                <label>Invisível</label>
+                <button name="alterar" id="alterar">Alterar Notícia</button>
+            </fieldset>
+            `
+            
+            $("#display").empty()
+            $("#display").append(form)
+            $("#display").modal()
+        }
+
+
+        $(document).on("click","button[id^=alterar]",function(){
+            var data = {}
+            data["_id"]=$("input[id^=idnoticia]").val()
+            data["titulo"] = $("input[id^=titulo]").val()
+            data["conteudo"] = $("textarea[id^=conteudo]").val()
+            data["visibilidade"] = $('input[name="visibilidade"]:checked').val();
+            $.ajax({
+                type: "PUT",
+                url: "/admin/noticias/"+data["_id"],
+                contentType: 'application/json',
+                data: JSON.stringify(data),
+                success: function(){
+                    //alert("só alterar")
+                    location.reload()
+                },
+                error: function(){
+                    //alert("erro")
+                    location.reload()
+                }
+            })
+        })
+
+        
+        function createReport(cor,msg){
+            $("#report").empty()
+            $("#report").append(msg)
+            $("#report").removeClass('hidden');
+            $("#report").removeClass('w3-red');
+            $("#report").removeClass('w3-green');
+            $("#report").addClass("w3-"+cor);
+            window.setTimeout("closereport();", 2500);
+        }
+        
+        function closereport(){
+          //div.classList.remove('visible');
+          // w3-red
+          $("#report").addClass("hidden");
+        }

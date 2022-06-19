@@ -1,0 +1,21 @@
+extends layout
+
+block content
+    div(class="w3-modal" id="display")
+    div(class="w3-row-padding")
+        div(class="w3-col m2 w3-border-right")
+            div(class="w3-bar-block")
+                a(style="text-decoration: none" href="/admin/utilizadores")
+                    button(id="users" class="w3-bar-item w3-button") Utilizadores 
+                        i(class="fas fa-user")
+                a(style="text-decoration: none" href="/admin/recursos")
+                    button(id="recursos" class="w3-bar-item  w3-button") Recursos 
+                        i(class="fas fa-file")
+                a(style="text-decoration: none" href="/admin/noticias")
+                    button(id="noticias" class="w3-bar-item w3-button") Noticias 
+                        i(class="fas fa-newspaper")
+                a(style="text-decoration: none" href="/admin/estatisticas")
+                    button(id="stats" class="w3-bar-item w3-button") Estatisticas 
+                        i(class="fas fa-chart-bar")
+        div(id="display" class="w3-col m9")
+            block content-admin
